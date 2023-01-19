@@ -2,21 +2,31 @@
 //Note: you should only write one function that can dynamically print the value of the exercise for that day, and it must be a closure
 
 
+function exercise(type) {
+    function exercise2(type){
+        return "Today's Excerise:" + type;
+    }  
+    return exercise2(type);
+}
+exercise("testType") 
+
+
+// function exercise(type) {
+//     return "Today's Excerise:" + type;
+// }
+
 
 // Output: Today's exercise: Running
-
-console.log(exercise("Running") () );
+ console.log(exercise("Running"));
 
 
 //Output: Today's exercise: Swimming
-
-console.log(exercise("Swimming") () );
+console.log(exercise("Swimming"));
 
 
 //Output: Today's exercise: Dancing
+ console.log(exercise("Dancing"));
 
-console.log(exercise("Dancing") () );
 
-
-//Output: Today's exercise: Fencing
-console.log(exercise("Fencing") () );
+// //Output: Today's exercise: Fencing
+ console.log(exercise("Fencing") () );
