@@ -4,7 +4,7 @@
 
 function exercise(type) {
     function exercise2(type){
-        return "Today's Excerise:" + type;
+        return "Today's Excerise: " + type;
     }  
     return exercise2(type);
 }
@@ -29,4 +29,4 @@ console.log(exercise("Swimming"));
 
 
 // //Output: Today's exercise: Fencing
- console.log(exercise("Fencing") () );
+ console.log(exercise("Fencing") );
