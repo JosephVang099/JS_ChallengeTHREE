@@ -16,42 +16,89 @@
 
 // 8. Test it out - can you create different programmers and run all the methods on them? Does each programmer maintain their own properties properly and independently of the other programmers? Bonus - ES6 Syntax: Use ES6 Syntax in your answer. Feel free to add on new methods or properties to incorporate the syntax.
 
+class person1 { 
+    constructor(name, job, age) { // created person constructor with three properties (#1)
+    this.name = name; // “this” keyword refers to an object that is executing the current piece of code. 
+    this.job = job;
+    this.age = age;
+    this.exercise = function () { // exercise method --> console.log (#2)
+    console.log("Running is fun! - said no one ever")
+    }
+    this.fetchJob = function () {
+    console.log(this.name + ' is a ' + this.job)
+    } //fetchJob method --> console.log (#3)
+    }
+    }
+
+
+class programmer1 {
+    constructor(name, job, age, languages, busy = true) // (#4)
+
+    completeTask(){ // (#5)
+        return this.busy=false;
+    }
+    acceptNewTask(){
+        if(this.busy){
+            return false
+        }else{
+            return true
+        }
+    }
+    offerNewtask(){ // (#6)
+        if (this.busy == true){
+            console.log(this.name + ' cannot accept any new task right now.');
+        }
+        else {
+            console.log(this.name + 'would love to take on a new responsibility')
+        }
+    }
+}
 
 
 
-const person1 = new Person ("Harold", "Backend Engineer", 20);
-
-const programmer1 = new Programmer ("Liana", "DevOps", 35, ["HTML", "C#", "LUA"]);
-
-const programmer2 = new Programmer ("Edwin", "Janitor", 55, ["HTML", "SASS", "RUBY"]);
-
-const programmer3 = new Programmer ("Emmanuella", "SysOps", 31, [("HTML", "CSS", "JS", "R")]);
 
 
-programmer1.learnLanguage ("CSS");
+    class programmer1 extends person1 {
+    constructor(name, job, age, languages, busy = true) {
+    super(name, job, age,)
+    this.languages = languages;
+    this.busy = busy;
+    }
+    completeTask() {
+    this.busy = false;
+    }
+    acceptNewtask() {
+    this.busy = true;
+    }
+    offerNewtask() {
+    if (this.busy === true) {
+    console.log(`${this.name} can't accept any new tasks right now.`)
+    } 
+    else {
+    console.log(`${this.name} would love to take on a new responsibility`)
+    }
+    }
+    learnLanguage() {
+    for (let i = 0; i < arguments.length; i++) {
+    this.languages.push(arguments[i]);
+    }
+    }
+    listLanguages() {
+    console.log(`${this.name} knows the following languages: ${this.languages.join(", ")}`)
+    }
+    }
 
-programmer2.learnLanguage ("C++");
 
-programmer3.learnLanguage ("JAVA");
-
-
-console.log(programmer1.listLanguage());
-
-console.log(programmer2.listLanguage());
-
-console.log(programmer3.listLanguage());
-
-
-console.log(person1);
-
-
-console.log(programmer1);
-
-console.log(programmer2);
-
-console.log(programmer3);
-
-
-person1.exercise();
-
-person1.fetchJob();
+    const techProgrammer1 = new programmer1('Brad', 'back-end developer', 23, ['Html', 'Css', 'Javascript', 'French', 'English']);
+    const techProgrammer2 = new programmer1('Robert', 'Nurse', 22, ['Css', 'Javascript', 'Html', 'React'], false);
+    techProgrammer1.offerNewtask(); // busy
+    techProgrammer2.offerNewtask(); // not busy
+    techProgrammer1.completeTask();
+    techProgrammer2.completeTask();
+    techProgrammer1.offerNewtask(); // show now accept a task
+    techProgrammer2.offerNewtask(); // should be no change because they were already not busy
+    techProgrammer1.listLanguages(); // should have no languages
+    techProgrammer2.listLanguages(); // should have languages
+    techProgrammer1.learnLanguage("Spanish", "French", "German");
+    techProgrammer1.listLanguages();
+    techProgrammer2.listLanguages();
